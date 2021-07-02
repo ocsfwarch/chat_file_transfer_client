@@ -87,6 +87,7 @@ code {
   height: 90%;
   width: 90%;
   color: blue;
+  resize: none;
 }
 
 /* Button Styling */

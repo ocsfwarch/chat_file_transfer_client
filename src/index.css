@@ -203,16 +203,30 @@ code {
   min-width: 340px;
   max-height: 500px;
   padding-bottom: 1em;
+  box-shadow: 7px 10px gray;
 }
 
 .file_upload_container .form_container .content {
   flex: 1 1 auto;
   display: flex;
   flex-flow: column nowrap;
-  width: 100%;
   justify-content: flex-start;
   background-color: transparent;
   padding-left: 1em;
+}
+
+.file_upload_container .form_container .content label {
+  font-weight: bold;
+  color: #00006f;
+}
+
+.file_upload_container .form_container .content .file_input {
+  font-weight: bold;
+  color: #00006f;
+}
+
+.file_upload_container .form_container .content .centered {
+  text-align: center;
 }
 
 .file_upload_container .form_container .results {

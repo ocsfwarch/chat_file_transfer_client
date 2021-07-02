@@ -25,38 +25,45 @@ export default function FileUpload(props) {
 
     formData.append("file", selectedFile);
 
-    const output = await fetch(`${props.apiUrl}/upload`, {
+    await fetch(`${props.apiUrl}/upload`, {
       method: "POST",
       body: formData,
     })
       .then((response) => response.json())
       .then((results) => {
-        console.log(`Results = ${results.results}`);
         setResults(results.results);
         setShowPleaseWait(false);
       })
-      .catch((err) => console.log(`ERROR: ${err}`));
+      .catch((err) => setResults(`ERROR: ${err}`));
   };
 
   return (
     <div className="file_upload_container">
       <form className="form_container">
         <section className="content">
-          <h2>File Upload Form</h2>
+          <span className="centered">
+            <h2>File Upload Form</h2>
+          </span>
           <p>
-            <label htmlFor="files">Select a File to Upload:</label>
+            <label htmlFor="input_file">Select a File to Upload:</label>
           </p>
-          <input type="file" id="file" name="file" onChange={onChange} />
+          <input
+            type="file"
+            className="file_input"
+            id="input_file"
+            name="input_file"
+            onChange={onChange}
+          />
         </section>
         <section className="results">
           <PleaseWait showMe={showPleaseWait} />
           {results}
         </section>
         <section className="controls">
-          <button type="button" onClick={uploadFile}>
+          <button className="btn_green" type="button" onClick={uploadFile}>
             Upload File
           </button>
-          <button type="button" onClick={clearEntry}>
+          <button className="btn_green" type="button" onClick={clearEntry}>
             Clear Entry
           </button>
         </section>

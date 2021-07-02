@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import PleaseWait from "../helpers/PleaseWait/PleaseWait";
 
 export default function FileUpload(props) {
@@ -6,19 +6,6 @@ export default function FileUpload(props) {
   const [selectedFile, setSelectedFile] = useState();
   const [results, setResults] = useState("");
   const [showPleaseWait, setShowPleaseWait] = useState(false);
-  const [file, setFile] = useState(null);
-
-  const fileInput = useRef(null);
-
-  const ImageInput = ({ file, setFile }) => {
-    const onChange = async (e) => {
-      console.log(`ImageInput onChange Called`);
-      if (e.target.files && e.target.files.length > 0) {
-        setFile(e.target.files[0]);
-      }
-    };
-    return <input type="file" name="image" onChange={onChange} />;
-  };
 
   const onChange = (event) => {
     console.log(
@@ -57,23 +44,9 @@ export default function FileUpload(props) {
         <section className="content">
           <h2>File Upload Form</h2>
           <p>
-            <label htmlFor="file">Select a File to Upload:</label>
+            <label htmlFor="files">Select a File to Upload:</label>
           </p>
           <input type="file" id="file" name="file" onChange={onChange} />
-          <label htmlFor="image">Select and image to upload:</label>
-          <input
-            type="file"
-            name="image"
-            ref={fileInput}
-            onChange={onChange}
-            style={{ display: "none" }}
-          />
-          <button
-            className="upload-btn"
-            onClick={() => fileInput.current.click()}
-          >
-            Choose File
-          </button>
         </section>
         <section className="results">
           <PleaseWait showMe={showPleaseWait} />

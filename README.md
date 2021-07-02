@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# CHAT File Manage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The purpose of this project is to allow a user to interact with files over the Internet.
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+The user is presented an application which will allow them to view/edit/search file content, download file content, or upload file content. File content refers to the particular file format the user may be interacting with.
 
-### `npm start`
+## Application Image
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Component Layout](https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/app_image_1.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Use Case 1 - View the contents of a text file.
 
-### `npm test`
+- This use case starts when the user selects the `File List` menu item.
+- The system will display a list of files available for the user to select.
+- The user makes a selection from the list.
+- The user presses the `View File` command button.
+- The system identifies the checks if the file exists.
+- The system reads the contents of the file.
+- The system returns the file contents.
+- This use case ends when selected file is displayed to the user.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Use Case 1 - Download the contents of a text file.
 
-### `npm run build`
+- This use case starts when the user selects the `File List` menu item.
+- The system will display a list of files available for the user to select.
+- The user makes a selection from the list.
+- The user presses the `Download File` command button.
+- The system identifies the checks if the file exists.
+- The system adds the file to the Response object download function.
+- The system transfers the file as an "attachment".
+- The browser receives the file.
+- The browser stores the file in the system default download area.
+- This use case ends when the browser shows the user the download is complete.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Use Case 3 - Upload a file to the server
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- This use case starts when the user selects the `File Upload` menu item.
+- The system displays a form that allows a user to select a file for upload.
+- The user presses the `Choose a File` command button.
+- The user selects a file for upload from the files displayed by their device.
+- The user presses the `Upload File` command button.
+- The system packages the user file selection for upload.
+- The system will POST the file.
+- The system receives the file.
+- The system verifies the file integrity.
+- The system stores the file.
+- The system returns a status to the user.
+- This use case ends when the status is displayed to the user.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Design and Architecture
 
-### `npm run eject`
+- Component Layout Diagram
+  ![Component Layout](https://github.com/ocsfwarch/tic_tac_toe/blob/master/Project_Docs/component_layout.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+| Component        | Description                                          |
+| ---------------- | ---------------------------------------------------- |
+| CHATFileTransfer | This is the controlling component for the app        |
+| Header           | The Header component displays the banner and menu    |
+| NavBar           | The NavBar component contains the menu               |
+| Main             | The Main component controls the file viewing         |
+| FileLister       | The FileLister component displays the list of files  |
+| FileViewer       | The FileViewer components displays the file contents |
+| FileUpload       | The FileUpload component controls the file upload    |
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Testing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Testing is performed on each of the components. Each of the component tests verifies the ability of the component to render and that each of the main sub-components are displayed. All the test files are contained in the `tests` folder.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Module used for testing   | Version |
+| ------------------------- | ------- |
+| @testing-library/jest-dom | ^5.14.1 |
+| @testing-library/react    | ^11.2.7 |

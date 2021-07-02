@@ -1,13 +1,234 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.app_container {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: lightblue;
+}
+
+/* Main */
+.main_file_viewer_container {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+}
+/* FileLister */
+.file_list_container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 10em;
+  width: 100vw;
+  background-color: white;
+}
+
+.file_list_container .dialog {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 10em;
+  width: 20em;
+}
+
+.file_list_container .file_select {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  /*height: 20em;
+  width: 20em;*/
+  width: 100%;
+  padding-left: 1em;
+  background-color: transparent;
+  transition: all 0.1s;
+}
+
+.file_list_container .controls {
+  flex: 0 0 auto;
+  display: flex;
+  height: 2em;
+  width: 100%;
+  justify-content: space-evenly;
+  background-color: transparent;
+}
+
+/* FileViewer */
+.file_viewer_container {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  /*height: 50vh;*/
+  width: 100vw;
+  background-color: lightgreen;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.text_display {
+  flex: 1 1 auto;
+  height: 90%;
+  width: 90%;
+  color: blue;
+}
+
+/* Button Styling */
+.btn_green {
+  flex: 0 0 auto;
+  width: 9rem;
+  border: 0;
+  line-height: 1.75;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  /*background-color: rgba(220, 0, 0, 1);*/
+  background-color: rgb(0, 220, 0);
+  background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.btn_green:hover {
+  /*background-color: rgba(255, 0, 0, 1);*/
+  background-color: rgb(0, 255, 0);
+}
+
+.btn_green:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* HEADER and NAVIGATION */
+.app_header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  background-color: white;
+  border-radius: 0.25em;
+}
+
+.app_header_banner {
+  flex: 0 0 auto;
+  height: 1.85em;
+  width: 100%;
+  font-size: 1.85em;
+  font-weight: bold;
+  color: #00006f;
+  border-bottom: 1px skyblue solid;
+  text-align: center;
+}
+
+.app_header_menu {
+  flex: 0 0 auto;
+  display: flex;
+  height: 2em;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  border-radius: 0.25em;
+  border-bottom: 1px skyblue solid;
+}
+
+.navContent {
+  font-size: 1.25em;
+  width: 100%;
+  font-weight: bold;
+}
+
+.navContent a {
+  text-decoration: none;
+}
+
+.navContent a:hover {
+  color: green;
+}
+
+.navLinks {
+  text-align: center;
+}
+
+.app_header_menu li {
+  display: inline;
+  padding-right: 1em;
+}
+
+/* FileUpload */
+.file_upload_container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+.file_upload_container .form_container {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 1em;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  min-width: 340px;
+  max-height: 500px;
+  padding-bottom: 1em;
+}
+
+.file_upload_container .form_container .content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  justify-content: flex-start;
+  background-color: transparent;
+  padding-left: 1em;
+}
+
+.file_upload_container .form_container .results {
+  flex: 0 0 auto;
+  display: flex;
+  height: 2em;
+  width: 90%;
+  background-color: transparent;
+  padding-left: 1em;
+}
+
+.file_upload_container .form_container .controls {
+  flex: 0 0 auto;
+  display: flex;
+  height: 2em;
+  width: 100%;
+  justify-content: space-evenly;
+  background-color: transparent;
 }

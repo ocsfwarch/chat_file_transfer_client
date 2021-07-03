@@ -1,4 +1,4 @@
-# CHAT File Manage
+# CHAT File Manager
 
 The purpose of this project is to allow a user to interact with files over the Internet.
 

@@ -29,11 +29,15 @@ export default function FileViewer(props) {
 
   return (
     <div className="file_viewer_container">
-      <textarea
-        className="text_display"
-        value={display}
-        onChange={updateDisplay}
-      ></textarea>
+      <section className="controls"></section>
+      <section className="display">
+        <textarea
+          className="text_display"
+          value={display}
+          onChange={updateDisplay}
+        ></textarea>
+      </section>
+      <section className="status"></section>
     </div>
   );
 }

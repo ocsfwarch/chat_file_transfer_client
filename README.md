@@ -8,7 +8,7 @@ The user is presented an application which will allow them to view/edit/search f
 
 ## Application Image
 
-![Component Layout](https://github.com/ocsfwarch/tic_tac_toe/blob/master/Project_Docs/component_layout.png)
+![Component Layout](https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/component_layout.png?raw=true)
 
 ## Use Case 1 - View the contents of a text file.
 

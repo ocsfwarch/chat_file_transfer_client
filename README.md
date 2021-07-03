@@ -52,7 +52,7 @@ The user is presented an application which will allow them to view/edit/search f
 ## Design and Architecture
 
 - Component Layout Diagram
-  ![Component Layout](https://github.com/ocsfwarch/tic_tac_toe/blob/master/Project_Docs/component_layout.png)
+  ![Component Layout](https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/component_layout.png)
 
 | Component        | Description                                          |
 | ---------------- | ---------------------------------------------------- |

@@ -13,6 +13,7 @@ export default function CHATList(props) {
             <FontAwesomeIcon
               className="removeAttachment"
               icon={["fas", "times-circle"]}
+              title="Remove selected file"
               onClick={(e) => {
                 props.removeAttachment(index);
               }}

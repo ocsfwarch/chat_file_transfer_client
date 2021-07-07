@@ -55,7 +55,11 @@ code {
   width: 100%;
   padding-left: 1em;
   background-color: transparent;
-  transition: all 0.1s;
+}
+
+.file_list_container .file_select ul {
+  list-style: none;
+  display: block;
 }
 
 .file_list_container .controls {
@@ -65,6 +69,11 @@ code {
   width: 100%;
   justify-content: space-evenly;
   background-color: transparent;
+}
+
+.fileListDiv {
+  background-color: gray;
+  transition: height 2s ease-out;
 }
 
 /* FileViewer */
@@ -246,9 +255,39 @@ code {
   color: #00006f;
 }
 
-.file_upload_container .form_container .content .file_input {
-  font-weight: bold;
-  color: #00006f;
+.file_upload_container .form_container .content .file_to_upload {
+  display: none;
+}
+
+.file_upload_container .form_container .content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.file_upload_container .form_container .content ul li {
+  margin: 0px;
+  padding: 0px;
+}
+
+.file_upload_container .form_container .content ul li .attachmentItem {
+  color: green;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: yellow;
+  padding-right: 1em;
+}
+
+.file_upload_container
+  .form_container
+  .content
+  ul
+  li
+  .attachmentItem
+  .removeAttachment {
+  cursor: pointer;
+  color: red;
 }
 
 .file_upload_container .form_container .content .centered {

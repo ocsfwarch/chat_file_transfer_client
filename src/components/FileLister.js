@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 
 export default function FileLister(props) {
-  const [fileName, setFileName] = useState("");
+  const [showList, setShowList] = useState(false);
+  const [fileName, setFileName] = useState("TEST");
   const [fileList, setFileList] = useState([]);
-  const [fileDisplay, setFileDisplay] = useState(
-    <option>List is Empty</option>
-  );
+  const [fileDisplay, setFileDisplay] = useState(<li>List is Empty</li>);
+  const [fileSelect, setFileSelect] = useState("");
+
   useEffect(() => {
     async function fetchFileList() {
       console.log(`Calling fetchFileList`);
@@ -14,9 +15,9 @@ export default function FileLister(props) {
       const theJson = await response.json();
       const theList = theJson.data.files.map((file, index) => {
         return (
-          <option key={index} value={index}>
+          <li key={index} value={index}>
             {file}
-          </option>
+          </li>
         );
       });
       setFileList(theJson.data.files);
@@ -62,15 +63,33 @@ export default function FileLister(props) {
     setFileName(fileList[event.target.value]);
   };
 
+  const displaySelect = (event) => {
+    event.preventDefault();
+    console.log(`BEFORE ${showList}`);
+    if (showList) {
+      setFileSelect("");
+    } else {
+      setFileSelect(fileDisplay);
+    }
+    setShowList(!showList);
+    console.log(`AFTER ${showList}`);
+  };
+
   return (
     <div className="file_list_container">
       <div className="dialog">
         <section className="file_select">
           <form>
             <label htmlFor="file_select">Select a file:&nbsp;</label>
-            <select name="file_select" id="file_select" onChange={onChange}>
-              {fileDisplay}
-            </select>
+            <input
+              type="text"
+              onClick={displaySelect}
+              value={fileName}
+              readOnly
+            ></input>
+            <section className="fileListDiv">
+              <ul>{fileSelect}</ul>
+            </section>
           </form>
         </section>
         <section className="controls">

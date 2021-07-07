@@ -9,6 +9,12 @@ import { Header } from "./Header";
 import Main from "./Main";
 import FileUpload from "./FileUpload";
 
+// Font Awesome Imports
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+
+library.add(fas);
+
 function CHATFileTransfer() {
   const [fileName, setFileName] = useState("");
   const updateFileName = (newFileName) => {

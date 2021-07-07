@@ -13,6 +13,9 @@ export default function CHATList(props) {
             <FontAwesomeIcon
               className="removeAttachment"
               icon={["fas", "times-circle"]}
+              onClick={(e) => {
+                props.removeAttachment(index);
+              }}
             />
           </div>
         </li>

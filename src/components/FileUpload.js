@@ -16,7 +16,12 @@ export default function FileUpload(props) {
     );
     setResults(``);
     setSelectedFile(event.target.files[0]);
-    setSelectedFiles([...selectedFiles, event.target.files[0]]);
+    //console.log(`event.target.files = ${event.target.files.length}`);
+    let newFiles = [];
+    for (let file of event.target.files) {
+      newFiles.push(file);
+    }
+    setSelectedFiles([...selectedFiles, ...newFiles]);
   };
   const triggerFiles = (event) => {
     event.preventDefault();
@@ -30,12 +35,11 @@ export default function FileUpload(props) {
     setResults(``);
   };
 
-  const removeAttachment = (index) => {
-    //event.preventDefault();
-    console.log(`removeAttachment == ${index}`);
-    //for (let x in event.target) {
-    //  console.log(`x = ${x}`);
-    //}
+  const removeAttachment = (indexToRemove) => {
+    const updatedSelectedFiles = selectedFiles.filter(
+      (item, index) => index !== indexToRemove
+    );
+    setSelectedFiles(updatedSelectedFiles);
   };
   const uploadFile = async () => {
     if (selectedFile) {
@@ -83,6 +87,7 @@ export default function FileUpload(props) {
             name="file_to_upload"
             ref={fileInputRef}
             onChange={onChange}
+            multiple
           />
           <CHATList files={selectedFiles} removeAttachment={removeAttachment} />
           <button className="btn_green" type="button" onClick={triggerFiles}>
@@ -98,7 +103,7 @@ export default function FileUpload(props) {
             Upload File
           </button>
           <button className="btn_green" type="button" onClick={clearEntry}>
-            Clear Entry
+            Clear All
           </button>
         </section>
       </form>

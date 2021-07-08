@@ -89,7 +89,12 @@ export default function FileUpload(props) {
             onChange={onChange}
             multiple
           />
-          <CHATList files={selectedFiles} removeAttachment={removeAttachment} />
+          <section className="file_list">
+            <CHATList
+              files={selectedFiles}
+              removeAttachment={removeAttachment}
+            />
+          </section>
           <button className="btn_green" type="button" onClick={triggerFiles}>
             Browse Files
           </button>

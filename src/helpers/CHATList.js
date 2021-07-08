@@ -7,18 +7,16 @@ export default function CHATList(props) {
   if (props.files && props.files.length) {
     theList = props.files.map((file, index) => {
       return (
-        <li key={index} value={index}>
-          <div className="attachmentItem">
-            <span>{file.name}</span>
-            <FontAwesomeIcon
-              className="removeAttachment"
-              icon={["fas", "times-circle"]}
-              title="Remove selected file"
-              onClick={(e) => {
-                props.removeAttachment(index);
-              }}
-            />
-          </div>
+        <li key={index} className="attachmentItem">
+          <section className="attachmentName">{file.name}</section>
+          <FontAwesomeIcon
+            className="removeAttachment"
+            icon={["fas", "times-circle"]}
+            title="Remove selected file"
+            onClick={(e) => {
+              props.removeAttachment(index);
+            }}
+          />
         </li>
       );
     });

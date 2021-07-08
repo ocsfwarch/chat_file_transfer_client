@@ -231,11 +231,13 @@ code {
   flex: 1 1 auto;
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
   margin: 1em;
   background-color: white;
   border: 1px solid black;
   border-radius: 0.5em;
-  min-width: 340px;
+  width: 90%;
+  max-width: 600px;
   max-height: 500px;
   padding-bottom: 1em;
   box-shadow: 7px 10px gray;
@@ -246,8 +248,9 @@ code {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
-  background-color: transparent;
-  padding-left: 1em;
+  width: 90%;
+  margin: 0.5em;
+  background-color: white;
 }
 
 .file_upload_container .form_container .content label {
@@ -259,9 +262,16 @@ code {
   display: none;
 }
 
+.file_upload_container .form_container .content .file_list {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+}
+
 .file_upload_container .form_container .content ul {
   list-style-type: none;
-  padding: 0;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 .file_upload_container .form_container .content ul li {
@@ -269,23 +279,24 @@ code {
   padding: 0px;
 }
 
-.file_upload_container .form_container .content ul li .attachmentItem {
-  color: green;
+.attachmentItem {
+  color: #00006f;
   font-weight: 400;
   display: flex;
+  flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  background-color: yellow;
   padding-right: 1em;
+  border-bottom: 1px solid skyblue;
 }
 
-.file_upload_container
-  .form_container
-  .content
-  ul
-  li
-  .attachmentItem
-  .removeAttachment {
+.attachmentName {
+  width: 90%;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
+.removeAttachment {
   cursor: pointer;
   color: red;
 }

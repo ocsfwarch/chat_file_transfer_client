@@ -34,7 +34,7 @@ code {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  height: 10em;
+  height: 12em;
   width: 100vw;
   background-color: white;
 }
@@ -42,8 +42,13 @@ code {
 .file_list_container .dialog {
   display: flex;
   flex-flow: column nowrap;
-  height: 10em;
+  height: 80%;
   width: 20em;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  box-shadow: 7px 10px grey;
+  padding-bottom: 1em;
 }
 
 .file_list_container .file_select {

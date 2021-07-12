@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 export default function FileViewer(props) {
   const [display, setDisplay] = useState("");
-  const [fileWasUpdated, setFileWasUpdated] = useState(false);
+  //const [fileWasUpdated, setFileWasUpdated] = useState(false);
   useEffect(() => {
     async function downloadFile() {
       console.log(`rendering fileViewer`);
@@ -13,7 +13,7 @@ export default function FileViewer(props) {
         })
         .catch((err) => console.log(`ERROR: ${err}`));
       //console.log(`Results = ${output}`);
-      setFileWasUpdated(false);
+      //setFileWasUpdated(false);
       setDisplay(output);
     }
     if (props.fileName) {
@@ -23,7 +23,7 @@ export default function FileViewer(props) {
 
   const updateDisplay = (event) => {
     event.preventDefault();
-    setFileWasUpdated(true);
+    //setFileWasUpdated(true);
     setDisplay(event.target.value);
   };
 
@@ -31,11 +31,9 @@ export default function FileViewer(props) {
     <div className="file_viewer_container">
       <section className="controls"></section>
       <section className="display">
-        <textarea
-          className="text_display"
-          value={display}
-          onChange={updateDisplay}
-        ></textarea>
+        <div className="text_display" onChange={updateDisplay}>
+          {display}
+        </div>
       </section>
       <section className="status"></section>
     </div>

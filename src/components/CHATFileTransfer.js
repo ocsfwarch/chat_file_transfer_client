@@ -6,7 +6,8 @@ import {
   //Redirect,
 } from "react-router-dom";
 import { Header } from "./Header";
-import Main from "./Main";
+import Home from "./Home";
+import FileList from "./FileList";
 import FileUpload from "./FileUpload";
 
 // Font Awesome Imports
@@ -34,9 +35,9 @@ function CHATFileTransfer() {
           />
           <Route
             exact
-            path="/"
+            path="/FileList"
             render={(props) => (
-              <Main
+              <FileList
                 {...props}
                 apiUrl={API_URL}
                 updateFileName={updateFileName}
@@ -44,6 +45,7 @@ function CHATFileTransfer() {
               />
             )}
           />
+          <Route path="/" component={Home} />
         </Switch>
       </div>
     </Router>

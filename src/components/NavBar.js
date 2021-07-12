@@ -7,7 +7,10 @@ export const NavBar = () => {
       <section>
         <ul className="navLinks">
           <li>
-            <Link to="/">File List</Link>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/FileList">File List</Link>
           </li>
           <li>
             <Link to="/FileUpload">File Upload</Link>

@@ -4,6 +4,7 @@ import CHATList from "../helpers/CHATList";
 
 export default function FileUpload(props) {
   //const [filename, setFilename] = useState("");
+  const FILELIMIT = 10;
   const [selectedFile, setSelectedFile] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [results, setResults] = useState("");
@@ -19,7 +20,12 @@ export default function FileUpload(props) {
     //console.log(`event.target.files = ${event.target.files.length}`);
     let newFiles = [];
     for (let file of event.target.files) {
-      newFiles.push(file);
+      if (newFiles.length + selectedFiles.length < FILELIMIT) {
+        newFiles.push(file);
+      } else {
+        setResults(`This app allows a maximum of ${FILELIMIT} files`);
+        break;
+      }
     }
     setSelectedFiles([...selectedFiles, ...newFiles]);
   };
@@ -40,7 +46,9 @@ export default function FileUpload(props) {
       (item, index) => index !== indexToRemove
     );
     setSelectedFiles(updatedSelectedFiles);
+    setResults(`Selection was removed.`);
   };
+
   const uploadFile = async () => {
     if (selectedFile) {
       setResults("");
@@ -48,6 +56,7 @@ export default function FileUpload(props) {
       const formData = new FormData();
 
       for (let file of selectedFiles) {
+        //console.log(`FILE ADDED`);
         formData.append("file", file);
       }
 

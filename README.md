@@ -12,7 +12,7 @@ The user is presented an application which will allow them to view/edit/search f
 
 ## Application Image - FileList Display
 
-![Component Layout](https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/app_image_2.png?raw=true)
+![Component Layout](https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/app_image_2.png)
 
 ## Application Image - FileUpload Display
 

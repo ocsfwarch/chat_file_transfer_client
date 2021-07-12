@@ -12,11 +12,11 @@ The user is presented an application which will allow them to view/edit/search f
 
 ## Application Image - FileList Display
 
-![Component Layout](https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/app_image_2.png?raw=true)
+![Component Layout](https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/app_image_2.PNG)
 
 ## Application Image - FileUpload Display
 
-![Component Layout](https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/app_image_3.png?raw=true)
+![Component Layout]https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/app_image_3.PNG)
 
 ## Use Case 1 - View the contents of a text file.
 

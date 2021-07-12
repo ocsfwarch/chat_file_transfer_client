@@ -6,7 +6,15 @@ The purpose of this project is to allow a user to interact with files over the I
 
 The user is presented an application which will allow them to view/edit/search file content, download file content, or upload file content. File content refers to the particular file format the user may be interacting with.
 
-## Application Image
+## Application Image - Home Display
+
+![Component Layout](https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/app_image_1.png?raw=true)
+
+## Application Image - FileList Display
+
+![Component Layout](https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/app_image_1.png?raw=true)
+
+## Application Image - FileUpload Display
 
 ![Component Layout](https://github.com/ocsfwarch/chat_file_transfer_client/blob/master/Project_Docs/app_image_1.png?raw=true)
 

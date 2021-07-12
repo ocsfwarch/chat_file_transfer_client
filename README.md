@@ -67,7 +67,8 @@ The user is presented an application which will allow them to view/edit/search f
 | CHATFileTransfer | This is the controlling component for the app        |
 | Header           | The Header component displays the banner and menu    |
 | NavBar           | The NavBar component contains the menu               |
-| Main             | The Main component controls the file viewing         |
+| Home             | The Home component contains the Landing Page         |
+| FileList         | The FileList component controls the file viewing     |
 | FileLister       | The FileLister component displays the list of files  |
 | FileViewer       | The FileViewer components displays the file contents |
 | FileUpload       | The FileUpload component controls the file upload    |

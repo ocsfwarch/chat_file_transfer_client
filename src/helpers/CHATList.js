@@ -24,7 +24,7 @@ export default function CHATList(props) {
     theList = (
       <li>
         <div className="attachmentItem">
-          <span>No file selected</span>
+          <span>Browse or Drop file(s) here</span>
         </div>
       </li>
     );

@@ -8,6 +8,7 @@ export default function FileUpload(props) {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [results, setResults] = useState("");
   const [showPleaseWait, setShowPleaseWait] = useState(false);
+  const [showDrag, setShowDrag] = useState(false);
   const fileInputRef = useRef();
 
   const onChange = (event) => {
@@ -25,6 +26,32 @@ export default function FileUpload(props) {
       }
     }
     setSelectedFiles([...selectedFiles, ...newFiles]);
+  };
+
+  const dropHandler = (event) => {
+    event.preventDefault();
+    setResults(``);
+    setShowDrag(false);
+    let newFiles = [];
+    for (let file of event.dataTransfer.files) {
+      if (newFiles.length + selectedFiles.length < FILELIMIT) {
+        newFiles.push(file);
+      } else {
+        setResults(`This app allows a maximum of ${FILELIMIT} files`);
+        break;
+      }
+    }
+    setSelectedFiles([...selectedFiles, ...newFiles]);
+  };
+
+  const dragOverHandler = (event) => {
+    event.preventDefault();
+    setShowDrag(true);
+  };
+
+  const dragLeaveHandler = (event) => {
+    event.preventDefault();
+    setShowDrag(false);
   };
 
   const triggerFiles = (event) => {
@@ -109,7 +136,13 @@ export default function FileUpload(props) {
             onChange={onChange}
             multiple
           />
-          <section className="file_list">
+          <section
+            id="drop_zone"
+            className={showDrag ? "file_list show_drag" : "file_list"}
+            onDrop={dropHandler}
+            onDragOver={dragOverHandler}
+            onDragLeave={dragLeaveHandler}
+          >
             <CHATList
               files={selectedFiles}
               removeAttachment={removeAttachment}

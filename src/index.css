@@ -324,7 +324,14 @@ code {
 .file_upload_container .form_container .content .file_list {
   display: flex;
   flex-flow: column nowrap;
+  max-height: 15em;
   width: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.show_drag {
+  background-color: gray;
 }
 
 .file_upload_container .form_container .content ul {

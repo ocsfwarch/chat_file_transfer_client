@@ -5,19 +5,16 @@ import CHATList from "../helpers/CHATList";
 export default function FileUpload(props) {
   //const [filename, setFilename] = useState("");
   const FILELIMIT = 10;
-  const [selectedFile, setSelectedFile] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [results, setResults] = useState("");
   const [showPleaseWait, setShowPleaseWait] = useState(false);
   const fileInputRef = useRef();
 
   const onChange = (event) => {
-    console.log(
-      `onChange = ${event.target.value}, files = ${event.target.files.length}`
-    );
+    //console.log(
+    //  `onChange = ${event.target.value}, files = ${event.target.files.length}`
+    //);
     setResults(``);
-    setSelectedFile(event.target.files[0]);
-    //console.log(`event.target.files = ${event.target.files.length}`);
     let newFiles = [];
     for (let file of event.target.files) {
       if (newFiles.length + selectedFiles.length < FILELIMIT) {
@@ -35,7 +32,6 @@ export default function FileUpload(props) {
   };
 
   const clearEntry = () => {
-    setSelectedFile(null);
     setSelectedFiles([]);
     fileInputRef.current.value = "";
     setResults(``);
@@ -50,7 +46,7 @@ export default function FileUpload(props) {
   };
 
   const uploadFile = async () => {
-    if (selectedFile) {
+    if (selectedFiles && selectedFiles.length) {
       setResults("");
       setShowPleaseWait(true);
       const formData = new FormData();

@@ -81,3 +81,8 @@ The user is presented an application which will allow them to view/edit/search f
 | ------------------------- | ------- |
 | @testing-library/jest-dom | ^5.14.1 |
 | @testing-library/react    | ^11.2.7 |
+
+## Project Notes
+
+- The demo version of CHAT File Manager does not allow for posting files remotely.
+- The demo version of CHAT File Manager will display a please wait for 2 seconds and then display a Success results message when the user requests to post files remotely via the file upload process.

@@ -26,6 +26,7 @@ export default function FileUpload(props) {
     }
     setSelectedFiles([...selectedFiles, ...newFiles]);
   };
+
   const triggerFiles = (event) => {
     event.preventDefault();
     fileInputRef.current.click();
@@ -43,6 +44,20 @@ export default function FileUpload(props) {
     );
     setSelectedFiles(updatedSelectedFiles);
     setResults(`Selection was removed.`);
+  };
+
+  const demoUploadFile = async () => {
+    if (selectedFiles && selectedFiles.length) {
+      setResults("");
+      setShowPleaseWait(true);
+      setTimeout(() => {
+        clearEntry();
+        setShowPleaseWait(false);
+        setResults(`Success: ${selectedFiles.length} file(s) were posted`);
+      }, 2000);
+    } else {
+      setResults(`Please select a file`);
+    }
   };
 
   const uploadFile = async () => {
@@ -109,7 +124,7 @@ export default function FileUpload(props) {
           {results}
         </section>
         <section className="controls">
-          <button className="btn_green" type="button" onClick={uploadFile}>
+          <button className="btn_green" type="button" onClick={demoUploadFile}>
             Upload File
           </button>
           <button className="btn_green" type="button" onClick={clearEntry}>

@@ -6,7 +6,17 @@ export default function FileViewer(props) {
   useEffect(() => {
     async function downloadFile() {
       console.log(`rendering fileViewer`);
-      const output = await fetch(`${props.apiUrl}/view/${props.fileName}`)
+      const options = {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `bearer ${props.apiToken}`,
+        },
+      };
+      const output = await fetch(
+        `${props.apiUrl}/view/${props.fileName}`,
+        options
+      )
         .then((results) => results.json())
         .then((data) => {
           return data.data;

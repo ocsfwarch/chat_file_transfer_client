@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function FileLister(props) {
   const [fileName, setFileName] = useState("TEST");
@@ -7,9 +7,14 @@ export default function FileLister(props) {
 
   useEffect(() => {
     async function fetchFileList() {
-      console.log(`Calling fetchFileList`);
-      // You can await here
-      const response = await fetch(props.apiUrl);
+      const options = {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `bearer ${props.apiToken}`,
+        },
+      };
+      const response = await fetch(props.apiUrl, options);
       const theJson = await response.json();
       const theList = theJson.data.files.map((file, index) => {
         return (
@@ -23,7 +28,7 @@ export default function FileLister(props) {
       setFileName(theJson.data.files[0]);
     }
     fetchFileList();
-  }, [props.apiUrl]);
+  }, [props.apiUrl, props.apiToken]);
 
   const onViewClick = (event) => {
     event.preventDefault();
@@ -39,6 +44,7 @@ export default function FileLister(props) {
     create a url, create an anchor element, submit a click event
     on that anchor element, and finally remove the anchor element.
     */
+  /*
   const onDownloadClick = (event) => {
     event.preventDefault();
     if (fileName && fileName.length) {
@@ -56,6 +62,43 @@ export default function FileLister(props) {
       // Remove element from DOM
       document.body.removeChild(anchor);
     }
+  };
+  */
+
+  /*
+ Authorization using bearer token was added to the API server
+ so I rewrote the function to send the authorization 
+ credentials and still allow the user to download
+ using a click
+ */
+
+  const onDownloadClick = async (event) => {
+    event.preventDefault();
+    if (fileName && fileName.length) {
+      const options = {
+        method: "GET",
+        headers: {
+          Authorization: `bearer ${props.apiToken}`,
+        },
+      };
+
+      await fetch(`${props.apiUrl}/download/${fileName}`, options)
+        .then((res) => {
+          return res.blob();
+        })
+        .then((blob) => {
+          const href = window.URL.createObjectURL(blob);
+          const anchor = document.createElement("a");
+          anchor.href = href;
+          anchor.setAttribute("download", `${fileName}`);
+          document.body.appendChild(anchor);
+          anchor.click();
+          document.body.removeChild(anchor);
+        })
+        .catch((err) => {
+          return Promise.reject({ Error: `Something went wrong`, err });
+        });
+    } // End if (fileName && fileName.length)
   };
 
   const onChange = (event) => {

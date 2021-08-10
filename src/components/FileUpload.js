@@ -73,6 +73,7 @@ export default function FileUpload(props) {
     setResults(`Selection was removed.`);
   };
 
+  /*
   const demoUploadFile = async () => {
     if (selectedFiles && selectedFiles.length) {
       setResults("");
@@ -86,6 +87,7 @@ export default function FileUpload(props) {
       setResults(`Please select a file`);
     }
   };
+  */
 
   const uploadFile = async () => {
     if (selectedFiles && selectedFiles.length) {
@@ -98,10 +100,15 @@ export default function FileUpload(props) {
         formData.append("file", file);
       }
 
-      await fetch(`${props.apiUrl}/upload`, {
+      const options = {
         method: "POST",
+        headers: {
+          Authorization: `bearer ${props.apiToken}`,
+        },
         body: formData,
-      })
+      };
+
+      await fetch(`${props.apiUrl}/upload`, options)
         .then((response) => response.json())
         .then((results) => {
           clearEntry();
@@ -157,7 +164,7 @@ export default function FileUpload(props) {
           {results}
         </section>
         <section className="controls">
-          <button className="btn_green" type="button" onClick={demoUploadFile}>
+          <button className="btn_green" type="button" onClick={uploadFile}>
             Upload File
           </button>
           <button className="btn_green" type="button" onClick={clearEntry}>

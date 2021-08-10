@@ -22,7 +22,7 @@ function CHATFileTransfer() {
     console.log(`FILENAME = ${newFileName}`);
     setFileName(newFileName);
   };
-  const API_URL = "http://localhost:5007/files";
+  const { API_URL, API_TOKEN } = require("../config");
 
   return (
     <Router>
@@ -31,7 +31,9 @@ function CHATFileTransfer() {
         <Switch>
           <Route
             path="/FileUpload"
-            render={(props) => <FileUpload {...props} apiUrl={API_URL} />}
+            render={(props) => (
+              <FileUpload {...props} apiUrl={API_URL} apiToken={API_TOKEN} />
+            )}
           />
           <Route
             exact
@@ -40,6 +42,7 @@ function CHATFileTransfer() {
               <FileList
                 {...props}
                 apiUrl={API_URL}
+                apiToken={API_TOKEN}
                 updateFileName={updateFileName}
                 fileName={fileName}
               />
